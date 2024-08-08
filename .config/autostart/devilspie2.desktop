@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/devilspie2
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=devilspie2
+Comment[en_US]=No description
+X-GNOME-Autostart-Delay=0
