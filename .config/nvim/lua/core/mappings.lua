@@ -47,11 +47,11 @@ M.general = {
     },
 
     n = {
-        -- switch between windows
-        ["<C-h>"] = { "<C-w>h", "Window left" },
-        ["<C-l>"] = { "<C-w>l", "Window right" },
-        ["<C-j>"] = { "<C-w>j", "Window down" },
-        ["<C-k>"] = { "<C-w>k", "Window up" },
+        -- switch between windows, 
+        -- ["<C-h>"] = { "<C-w>h", "Window left" },
+        -- ["<C-l>"] = { "<C-w>l", "Window right" },
+        -- ["<C-j>"] = { "<C-w>j", "Window down" },
+        -- ["<C-k>"] = { "<C-w>k", "Window up" },
 
         -- Resize window using <shift> arrow keys
         ["<S-Up>"]    = { "<Cmd>resize +2<CR>",          "Resize up" },
