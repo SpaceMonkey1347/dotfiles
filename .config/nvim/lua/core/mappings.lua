@@ -47,7 +47,7 @@ M.general = {
     },
 
     n = {
-        -- switch between windows, 
+        -- switch between windows
         -- ["<C-h>"] = { "<C-w>h", "Window left" },
         -- ["<C-l>"] = { "<C-w>l", "Window right" },
         -- ["<C-j>"] = { "<C-w>j", "Window down" },
