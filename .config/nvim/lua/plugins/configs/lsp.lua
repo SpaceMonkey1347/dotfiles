@@ -80,6 +80,12 @@ ls.add_snippets("lua", {
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
+-- diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+        underline = false,
+    })
+
 cmp.setup({
     window = {
         completion = cmp.config.window.bordered(),

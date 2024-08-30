@@ -225,7 +225,7 @@ M.file = {
 
 M.buffer = {
     n = {
-        ["<leader>x"] = { "<Cmd> bd <Cr>", "Delete buffer", opts = opts },
+        ["<leader>x"] = { "<Cmd> bd! <Cr>", "Delete buffer", opts = opts },
         ["<leader>bn"] = { "<Cmd> tabnew <CR>", "New tab" },
         ["[[b"] = { "<Cmd> +tabmove <CR>", "Move tab left" },
         ["]]b"] = { "<Cmd> -tabmove <CR>", "Move tab right" },
