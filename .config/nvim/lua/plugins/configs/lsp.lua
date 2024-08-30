@@ -78,6 +78,150 @@ ls.add_snippets("lua", {
     })
 })
 
+-- REF: https://learn.microsoft.com/en-us/cpp/c-language/cpp-integer-limits?view=msvc-170
+ls.add_snippets("c", {
+    -- bytes in smallest variable that's not a bit field
+    s({
+        trig = "maxcharbit",
+        dscr= "CHAR_BIT",
+    }, {
+        t("8"),
+    }),
+
+    -- signed char
+    s({
+        trig = "minschar",
+        dscr= "SCHAR_MIN",
+    }, {
+        t("-128"),
+    }),
+    s({
+        trig = "maxschar",
+        dscr= "SCHAR_MAX",
+    },
+    {
+        t("127"),
+    }),
+
+    -- unsigned char
+    s({
+        trig = "maxuchar",
+        dscr= "UCHAR_MAX",
+    }, { -- todo convert to choice
+        t("255 (0xff)"),
+    }),
+
+    -- char
+    s({
+        trig = "minchar",
+        dscr= "CHAR_MIN",
+    }, {
+        t("-128"),
+    }),
+    s({
+        trig = "maxchar",
+        dscr= "CHAR_MAX",
+    }, {
+        t("127"),
+    }),
+
+    -- max bytes in multibyte character
+    s({
+        trig = "maxmblen",
+        dscr= "MB_LEN_MAX",
+    }, {
+        t("5"),
+    }),
+
+    -- short
+    s({
+        trig = "minshrt",
+        dscr= "SHRT_MIN",
+    }, {
+        t("-32768"),
+    }),
+    s({
+        trig = "maxshrt",
+        dscr= "SHRT_MAX",
+    }, {
+        t("32767"),
+    }),
+
+    -- unsigned short
+    s({
+        trig = "maxushrt",
+        dscr= "USHRT_MAX",
+    }, {
+        t("65535"),
+    }),
+
+    -- int
+    s({
+        trig = "minint",
+        dscr= "INT_MIN",
+    }, {
+        t("-2147483647 - 1"),
+    }),
+    s({
+        trig = "maxint",
+        dscr= "INT_MAX",
+    }, {
+        t("2147483647"),
+    }),
+
+    -- unsigned int
+    s({
+        trig = "maxuint",
+        dscr= "UINT_MAX",
+    }, {
+        t("4294967295 (0xffffffff)"),
+    }),
+
+    -- long
+    s({
+        trig = "minlong",
+        dscr= "LONG_MIN",
+    }, {
+        t("-2147483647 - 1"),
+    }),
+    s({
+        trig = "maxlong",
+        dscr= "LONG_MAX",
+    }, {
+        t("2147483647"),
+    }),
+
+    -- unsigned long
+    s({
+        trig = "maxulong",
+        dscr= "ULONG_MAX",
+    }, {
+        t("4294967295 (0xffffffff)"),
+    }),
+
+    -- long long
+    s({
+        trig = "minllong",
+        dscr= "LLONG_MIN",
+    }, {
+        t("-9_223_372_036_854_775_807 - 1"),
+    }),
+    s({
+        trig = "maxllong",
+        dscr= "LLONG_MAX",
+    }, {
+        t("9_223_372_036_854_775_807"),
+    }),
+
+    -- unsigned long long
+    s({
+        trig = "maxullong",
+        dscr= "ULLONG_MAX",
+    }, {
+        t("18_446_744_073_709_551_615 (0xffffffffffffffff)"),
+    }),
+})
+
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- diagnostics
