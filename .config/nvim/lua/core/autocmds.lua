@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
--- -- highlight yanks
+-- highlight yanks
 vim.api.nvim_create_autocmd('TextYankPost', {
     group    = 'bufcheck',
     pattern  = '*',

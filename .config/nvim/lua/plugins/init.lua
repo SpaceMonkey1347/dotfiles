@@ -130,15 +130,15 @@ require("lazy").setup({
         end,
     },
 
-    -- documentation generator
-    {
-        "kkoomen/vim-doge",
-        keys = { "<leader>dg", "<Plug>(doge-generate)" },
-        init = function ()
-            vim.cmd([[let g:doge_enable_mappings = 0]])
-            require("core.utils").load_mappings "doge"
-        end,
-    },
+    -- -- documentation generator
+    -- {
+    --     "kkoomen/vim-doge",
+    --     keys = { "<leader>dg", "<Plug>(doge-generate)" },
+    --     init = function ()
+    --         vim.cmd([[let g:doge_enable_mappings = 0]])
+    --         require("core.utils").load_mappings "doge"
+    --     end,
+    -- },
 
     -- autopairs
     {
@@ -267,6 +267,7 @@ require("lazy").setup({
         },
         config = function (_, _)
             require("plugins.configs.lsp")
+            require("core.utils").load_mappings "lsp"
         end
     },
 

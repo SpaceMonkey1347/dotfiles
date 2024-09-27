@@ -29,18 +29,19 @@ else
     file_sourced = true
 end
 
-
 M.general = {
+    [{ "i", "c" }] = {
+        ["<C-h>"] = { "<Left>", "Move left" },
+        ["<C-l>"] = { "<Right>", "Move right" },
+        ["<C-j>"] = { "<Down>", "Move down" },
+        ["<C-k>"] = { "<Up>", "Move up" },
+    },
+
     i = {
         ["jk"] = { "<Esc>", "Escape insert mode", opts = { nowait = true }},
 
         ["<C-b>"] = { "<ESC>^i", "Goto beginning of line" },
         ["<C-e>"] = { "<End>", "Goto end of line" },
-
-        ["<C-h>"] = { "<Left>", "Move left" },
-        ["<C-l>"] = { "<Right>", "Move right" },
-        ["<C-j>"] = { "<Down>", "Move down" },
-        ["<C-k>"] = { "<Up>", "Move up" },
 
         ["<C-s>"] = { "<Cmd> w <CR>", "Save file" },
         ["<C-c>"] = { "<cmd> %y+ <CR>", "Copy whole file" },
@@ -81,14 +82,6 @@ M.general = {
         -- auto-captialize SQL CITE: https://softwareengineering.stackexchange.com/questions/69576/how-to-auto-format-and-auto-capitalize-sql-in-vim
         ["rp"] = { ":s/update\\|select\\|from\\|where\\|left join\\|inner join\\|group by\\|order by/\\U&/ge<cr><esc>" }
     },
-
-    c = {
-        ["<C-h>"] = { "<Left>" },
-        ["<C-j>"] = { "<Down>" },
-        ["<C-k>"] = { "<Up>" },
-        ["<C-l>"] = { "<Right>" },
-    }
-
 }
 
 M.modify = {
@@ -115,7 +108,7 @@ M.modify = {
 }
 
 M.clipboard = {
-    n = {
+    [{ "n", "x" }] = {
         ['<leader><leader>y'] = { [["+y]],   "Yank into system clipboard" },
         ['<leader><leader>Y'] = { [["+Y]],   "Yank into system clipboard" },
         ['<leader><leader>p'] = { [["+p]],    "Put from system clipboard" },
@@ -124,7 +117,9 @@ M.clipboard = {
         ['<leader><leader>D'] = { [["+D]], "Delete into system clipboard" },
         ['<leader><leader>c'] = { [["+c]], "Change into system clipboard" },
         ['<leader><leader>C'] = { [["+C]], "Change into system clipboard" },
+    },
 
+    n = {
         ['<leader><leader>x'] = { [["_d]], "Delete into void register" },
         ['<leader><leader>X'] = { [["_D]], "Delete into void register" },
         ['<leader><leader>v'] = { [["_c]], "Change into void register" },
@@ -132,15 +127,6 @@ M.clipboard = {
     },
 
     x = {
-        ["<leader><leader>y"] = { [["+y]], "Yank into system clipboard" },
-        ["<leader><leader>Y"] = { [["+Y]], "Yank into system clipboard" },
-        ['<leader><leader>p'] = { [["+p]], "Put from system clipboard" },
-        ['<leader><leader>P'] = { [["+P]], "Put from system clipboard" },
-        ['<leader><leader>d'] = { [["+d]], "Delete into system clipboard" },
-        ['<leader><leader>D'] = { [["+D]], "Delete into system clipboard" },
-        ['<leader><leader>c'] = { [["+c]], "Change into system clipboard" },
-        ['<leader><leader>C'] = { [["+C]], "Change into system clipboard" },
-
         ["<leader>p"] = { [["_dp]], "don't copy highlighted text when pasting over" },
         ["<leader>P"] = { [["_dP]], "don't copy highlighted text when pasting over" },
         ['<leader>d'] = { [["_d]], "Delete into void register" },
@@ -313,7 +299,6 @@ M.comment = {
             "Toggle comment",
         },
     },
-
 }
 
 M.todo_comments = {
@@ -342,14 +327,9 @@ M.doge = {
 
     n = {
         ["<Leader>dg"] = { "<Plug>(doge-generate)" },
-        ["<C-f>"] = { "<Plug>(doge-comment-jump-forward)" },
-        ["<C-b>"] = { "<Plug>(doge-comment-jump-backward)" },
     },
-    i = {
-        ["<C-f>"] = { "<Plug>(doge-comment-jump-forward)" },
-        ["<C-b>"] = { "<Plug>(doge-comment-jump-backward)" },
-    },
-    v = {
+
+    [{ "n", "i", "v" }] = {
         ["<C-f>"] = { "<Plug>(doge-comment-jump-forward)" },
         ["<C-b>"] = { "<Plug>(doge-comment-jump-backward)" },
     },
@@ -366,16 +346,15 @@ M.nvimtree = {
 M.toggleterm = {
     plugin = true,
 
-    n = {
-        ["<C-_>"] = { "<Cmd> ToggleTerm direction=float <CR>", "Toggle floating terminal" },
+    [{ "n", "t" }] = {
         ["<A-i>"] = { "<Cmd> ToggleTerm direction=float <CR>", "Toggle floating terminal" },
         ["<A-v>"] = { "<Cmd> ToggleTerm direction=vertical size=40 <CR>", "Toggle vertical terminal" },
         ["<A-h>"] = { "<Cmd> ToggleTerm direction=horizontal <CR>", "Toggle horizontal terminal" },
     },
+    n = {
+        ["<C-_>"] = { "<Cmd> ToggleTerm direction=float <CR>", "Toggle floating terminal" },
+    },
     t = {
-        ["<A-i>"] = { "<Cmd> ToggleTerm direction=float <CR>", "Toggle floating terminal" },
-        ["<A-v>"] = { "<Cmd> ToggleTerm direction=vertical <CR>", "Toggle vertical terminal" },
-        ["<A-h>"] = { "<Cmd> ToggleTerm direction=horizontal <CR>", "Toggle horizontal terminal" },
         ["<esc>"] = { [[<C-\><C-n>]] },
         -- ["jk"]  = { [[<C-\><C-n>]] },
         ["<C-h>"] = { [[<C-\><C-n><C-W>h]] },
@@ -421,6 +400,29 @@ M.fugitive = {
     n = {
         ["<leader>gs"] = { vim.cmd.Git, "Git" }
     }
+}
+
+M.lsp = {
+    plugin = true,
+
+    [{ "i", "s" }] = {
+        ["<C-h"] = {
+            function ()
+                if require("luasnip").choice_active() then
+                    require("luasnip").change_choice(-1)
+                end
+            end,
+            "luasnip prev choice node"
+        },
+        ["<C-l"] = {
+            function ()
+                if require("luasnip").choice_active() then
+                    require("luasnip").change_choice(1)
+                end
+            end,
+            "luasnip next choice node"
+        },
+    },
 }
 
 M.dap = {
@@ -502,11 +504,9 @@ M.zen_mode = {
     n = {
         ["<leader>z"] = { "<Cmd> ZenMode <CR>", "Toggle ZenMode" },
 
-    }
-
+    },
 }
 
-        -- cmd = {"MacroSave", "MacroYank", "MacroSelect", "MacroDelete"},
 M.macros = {
     plugin = true,
 
@@ -515,7 +515,7 @@ M.macros = {
         ["<leader>qy"] = { "<Cmd> MacroYank <CR>", "Yank macro" },
         ["<leader>qs"] = { "<Cmd> MacroSelect <CR>", "Select macro" },
         ["<leader>qd"] = { "<Cmd> MacroDelete <CR>", "Delete macro" },
-    }
+    },
 }
 
 -- NOTE: boilerplate
