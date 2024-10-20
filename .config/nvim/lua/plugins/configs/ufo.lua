@@ -1,5 +1,5 @@
 
--- vim.o.foldcolumn = "1"
+vim.o.foldcolumn = "1"
 vim.o.foldlevel = 99
 vim.opt.foldlevelstart = 99 -- fold level when entering buffer
 vim.opt.foldenable = true -- toggle with "zi"

@@ -35,7 +35,7 @@ require("mason-lspconfig").setup({
     ensure_installed = { -- LSP servers
         "clangd",
         "lua_ls",
-        "tsserver",
+        "ts_ls",
         "cssls",
         "eslint",
         "rust_analyzer",

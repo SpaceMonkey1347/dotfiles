@@ -62,6 +62,8 @@ require("lazy").setup({
         end,
     },
 
+    { 'echasnovski/mini.icons', version = '*' },
+
     -- syntax highlighting
     {
         "nvim-treesitter/nvim-treesitter",
@@ -189,6 +191,18 @@ require("lazy").setup({
             require("nvim-tree").setup(opts)
         end,
     },
+
+    -- -- file manager
+    -- {
+    --     "nvim-neo-tree/neo-tree.nvim",
+    --     branch = "v3.x",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    --         "MunifTanjim/nui.nvim",
+    --         -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    --     },
+    -- },
 
     -- fuzzy finder
     {
@@ -396,6 +410,34 @@ require("lazy").setup({
         init = function ()
             require("core.utils").load_mappings "cellular_automaton"
         end
+    },
+
+    {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim", -- required by telescope
+            "MunifTanjim/nui.nvim",
+
+            -- optional
+            "nvim-treesitter/nvim-treesitter",
+            "rcarriga/nvim-notify",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            -- configuration goes here
+
+            ---@type string
+            arg = "leetcode.nvim",
+
+            ---@type lc.lang
+            lang = "javascript",
+
+            plugins = {
+                non_standalone = true,
+            }
+        },
     },
 
     -- which-key

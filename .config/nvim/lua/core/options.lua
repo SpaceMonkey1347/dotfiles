@@ -53,22 +53,5 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- code folding (now handled by ufo)
--- vim.o.foldmethod = "expr"
--- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.o.foldcolumn = "1"
--- vim.o.foldlevel = 20
--- vim.opt.foldlevelstart = 99 -- fold level when entering buffer
--- vim.opt.foldenable = true -- toggle with "zi"
--- vim.opt.fillchars = {
---   foldopen = "",
---   foldclose = "",
---   fold = " ",
---   foldsep = " ",
---   diff = "╱",
---   eob = " ",
--- }
-
--- set viewoptions=cursor,folds,slash,unix
 vim.opt.viewoptions = "cursor,folds,slash,unix"
 
