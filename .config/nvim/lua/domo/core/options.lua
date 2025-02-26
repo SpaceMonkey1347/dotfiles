@@ -1,0 +1,62 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+
+-- Tab Settinvim.g.
+vim.o.tabstop = 4 -- A TAB character looks like 4 spaces
+vim.o.softtabstop = 4 -- spaces inserted instead of a TAB character
+vim.o.shiftwidth = 4 -- spaces inserted when indenting
+vim.o.expandtab = true -- Pressing TAB inserts spaces instead of TAB character
+
+vim.opt.smartindent = true
+
+vim.opt.autoread = true -- update buffer when chanvim.g.d outside neovim
+-- vim.opt.autochdir = true -- set working directory to parent of buffer
+
+vim.opt.laststatus = 3 -- when to display statusline
+-- vim.opt.winbar = "%=%m%f" -- `%m` for save status, `%f` for filename
+vim.opt.showcmd = true -- n mode keys and v mode selection size
+
+vim.opt.cursorline = true -- hilight cursorline
+vim.opt.wrap = false -- line wrap
+vim.opt.sidescroll = 20
+
+vim.opt.scrolloff = 8 -- curser 8 lines from top or bottom of file
+-- show listchars
+vim.opt.list = false
+vim.opt.listchars:prepend({ eol='↵',trail='~',tab='>-',nbsp='␣' })
+
+-- Numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth = 2
+vim.opt.ruler = true -- show cursor pos (line, column)
+
+-- on search '/term'
+vim.opt.hlsearch = false
+vim.opt.incsearch = true -- hilight while writing /search term
+
+vim.opt.termguicolors = true -- 24-bit RGB
+
+vim.opt.updatetime = 50 -- fast updatetime
+
+vim.opt.signcolumn = "yes" -- errors and whatnot column left of line numbers
+vim.opt.isfname:append("@-@")
+
+vim.opt.colorcolumn="80"
+
+-- for undotree to have long running undos
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.viewoptions = "cursor,folds,slash,unix"
+
+-- Set filetype to `bigfile` for files larger than 1.5 MB
+-- Only vim syntax will be enabled (with the correct filetype)
+-- LSP, treesitter and other ft plugins will be disabled.
+-- mini.animate will also be disabled.
+vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+
